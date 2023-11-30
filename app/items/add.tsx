@@ -1,6 +1,6 @@
 import React from 'react'
 import { Label } from '@/components/ui/label'
-import { Button } from '../ui/button'
+import { Button } from '../../components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Select } from '@/components/ui/select'
 import { SelectTrigger } from '@/components/ui/select'

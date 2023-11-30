@@ -22,11 +22,19 @@ const NavBar = () => {
         },
         {
             label:"Billing",
-            href:"/billing"
+            href:"/billings"
+        },
+        {
+            label:"Items",
+            href:"/items"
         },
         {
             label:"Settings",
             href:"/settings"
+        },
+        {
+            label:"Login",
+            href:"/login"
         }
     ]
 

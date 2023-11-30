@@ -1,7 +1,6 @@
-"use client"
-import Image from 'next/'
+"use client";
+import Image from "next/image";
 
-import * as React from "react"
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -13,11 +12,12 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-} from "@tanstack/react-table"
-import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react"
+} from "@tanstack/react-table";
+import { ArrowUpDown, ChevronDown, MoreHorizontal } from "lucide-react";
+import * as React from "react";
 
-import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -26,8 +26,8 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
+} from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -35,83 +35,83 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-
-
+} from "@/components/ui/table";
 
 const data: Payment[] = [
   {
     id: "m5gr84i9",
-    items:"hi",
-    stock:10,
+    items: "hi",
+    stock: 10,
     amount: 316,
     status: "In Stock",
     email: "ken99@yahoo.com",
-    name:"Apex Computers",
-    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuIG8yzyNxH5z7tjNMWMPvky7ylhUz9KnWnQ&usqp=CAU",
+    name: "Apex Computers",
+    imageUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuIG8yzyNxH5z7tjNMWMPvky7ylhUz9KnWnQ&usqp=CAU",
   },
   {
     id: "3u1reuv4",
-    items:"hi",
-    stock:10 ,
+    items: "hi",
+    stock: 10,
     amount: 242,
     status: "Out of Stock",
     email: "Abe45@gmail.com",
-    name:"Modern Automobile",
-    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuIG8yzyNxH5z7tjNMWMPvky7ylhUz9KnWnQ&usqp=CAU",
+    name: "Modern Automobile",
+    imageUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuIG8yzyNxH5z7tjNMWMPvky7ylhUz9KnWnQ&usqp=CAU",
   },
   {
     id: "derv1ws0",
-    items:"hi",
+    items: "hi",
     amount: 837,
     status: "In Stock",
-    stock:10 ,
-    name:"AIM Infotech",
+    stock: 10,
+    name: "AIM Infotech",
     email: "Monserrat44@gmail.com",
-    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuIG8yzyNxH5z7tjNMWMPvky7ylhUz9KnWnQ&usqp=CAU",
+    imageUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuIG8yzyNxH5z7tjNMWMPvky7ylhUz9KnWnQ&usqp=CAU",
   },
   {
     id: "5kma53ae",
-    items:"hi",
+    items: "hi",
     amount: 874,
-    stock:80 ,
-    name:"Best Power Tools",
+    stock: 80,
+    name: "Best Power Tools",
     status: "In Stock",
     email: "Silas22@gmail.com",
-    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuIG8yzyNxH5z7tjNMWMPvky7ylhUz9KnWnQ&usqp=CAU",
+    imageUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuIG8yzyNxH5z7tjNMWMPvky7ylhUz9KnWnQ&usqp=CAU",
   },
   {
     id: "bhqecj4p",
-    items:"hi",
+    items: "hi",
     amount: 721,
-    name:"AIM Infotech",
+    name: "AIM Infotech",
     status: "Low Stock",
-    stock:50 ,
+    stock: 50,
     email: "carmella@hotmail.com",
-    imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuIG8yzyNxH5z7tjNMWMPvky7ylhUz9KnWnQ&usqp=CAU",
+    imageUrl:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuIG8yzyNxH5z7tjNMWMPvky7ylhUz9KnWnQ&usqp=CAU",
   },
-]
-
+];
 
 export type Payment = {
-  id: string
-  items:string
-  amount: number
-  status: "Low Stock" | "Out of Stock" | "In Stock" 
-  stock:number
-  name:string
-  email: string,
-  
-  imageUrl:string
-}
+  id: string;
+  items: string;
+  amount: number;
+  status: "Low Stock" | "Out of Stock" | "In Stock";
+  stock: number;
+  name: string;
+  email: string;
 
-
+  imageUrl: string;
+};
 
 export const columns: ColumnDef<Payment>[] = [
   {
     id: "select",
     header: ({ table }) => (
-      <Checkbox 
+      <Checkbox
         checked={table.getIsAllPageRowsSelected()}
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all"
@@ -126,19 +126,16 @@ export const columns: ColumnDef<Payment>[] = [
     ),
     enableSorting: false,
     enableHiding: false,
-  }
-  ,
-  
-
+  },
   {
-    id: 'imageAndName',
-    header: 'Product Image and Name',
+    id: "imageAndName",
+    header: "Product Image and Name",
     cell: ({ row }) => (
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <img
-          src={row.original.imageUrl || 'default-image-url.jpg'}
+      <div style={{ display: "flex", alignItems: "center" }}>
+        <Image
+          src={row.original.imageUrl || "default-image-url.jpg"}
           alt="Product Image"
-          style={{ width: '50px', height: '50px', marginRight: '10px' }} // Set your desired width and height
+          style={{ width: "50px", height: "50px", marginRight: "10px" }} // Set your desired width and height
         />
         <span>{row.original.name}</span>
       </div>
@@ -149,9 +146,7 @@ export const columns: ColumnDef<Payment>[] = [
   {
     accessorKey: "name",
     header: "items Name",
-    cell: ({ row }) => (
-      <div className="capitalize">{row.getValue("name")}</div>
-    ),
+    cell: ({ row }) => <div className="capitalize">{row.getValue("name")}</div>,
   },
   {
     accessorKey: "status",
@@ -178,7 +173,7 @@ export const columns: ColumnDef<Payment>[] = [
           Email
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
-      )
+      );
     },
     cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
   },
@@ -186,22 +181,22 @@ export const columns: ColumnDef<Payment>[] = [
     accessorKey: "amount",
     header: () => <div className="text-right">Amount</div>,
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"))
+      const amount = parseFloat(row.getValue("amount"));
 
       // Format the amount as a dollar amount
       const formatted = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
-      }).format(amount)
+      }).format(amount);
 
-      return <div className="text-right font-medium">{formatted}</div>
+      return <div className="text-right font-medium">{formatted}</div>;
     },
   },
   {
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const payment = row.original
+      const payment = row.original;
 
       return (
         <DropdownMenu>
@@ -216,26 +211,26 @@ export const columns: ColumnDef<Payment>[] = [
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(payment.id)}
             >
-            Edit
+              Edit
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>Delete</DropdownMenuItem>
             <DropdownMenuItem>View payment details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-      )
+      );
     },
   },
-]
+];
 
 export default function DataTableDemo() {
-  const [sorting, setSorting] = React.useState<SortingState>([])
+  const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
-  )
+  );
   const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({})
-  const [rowSelection, setRowSelection] = React.useState({})
+    React.useState<VisibilityState>({});
+  const [rowSelection, setRowSelection] = React.useState({});
 
   const table = useReactTable({
     data,
@@ -254,7 +249,7 @@ export default function DataTableDemo() {
       columnVisibility,
       rowSelection,
     },
-  })
+  });
 
   return (
     <div className="w-full">
@@ -289,7 +284,7 @@ export default function DataTableDemo() {
                   >
                     {column.id}
                   </DropdownMenuCheckboxItem>
-                )
+                );
               })}
           </DropdownMenuContent>
         </DropdownMenu>
@@ -309,7 +304,7 @@ export default function DataTableDemo() {
                             header.getContext()
                           )}
                     </TableHead>
-                  )
+                  );
                 })}
               </TableRow>
             ))}
@@ -369,7 +364,5 @@ export default function DataTableDemo() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-
-

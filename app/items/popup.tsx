@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import Add from '../Item/DataTable'
+import Add from './DataTable'
 
 export function DialogDemo() {
   return (
@@ -22,7 +22,7 @@ export function DialogDemo() {
         <DialogHeader>
           <DialogTitle>Edit profile</DialogTitle>
           <DialogDescription>
-            Make changes to your profile here. Click save when you're done.
+            Make changes to your profile here. Click save when you&aposre done.
           </DialogDescription>
         </DialogHeader>
      <Add/>

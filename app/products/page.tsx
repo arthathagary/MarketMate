@@ -2,9 +2,9 @@ import React from 'react'
 import {Button} from "../../components/ui/button"
 import Datatable from './Datatable'
 
-export const page = () => {
+export const ProductPage = () => {
   return (
-    <div>
+    <div className='w-full'>
     <div>
       <Datatable/>
     </div>
@@ -15,4 +15,4 @@ export const page = () => {
   )
 }
 
-export default page
+export default ProductPage
