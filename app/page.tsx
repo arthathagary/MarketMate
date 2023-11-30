@@ -1,13 +1,10 @@
-import { Button } from '@/components/ui/button'
-import { ModeToggle } from '@/components/ui/toggle-mode'
-import Image from 'next/image'
-import Login from './login/page'
+import DashboardLayout from "./dashboard/layout";
 
 export default function Home() {
   return (
     <>
-    <Login />
-    {/* <ModeToggle /> */}
+      <DashboardLayout />
+      {/* <ModeToggle /> */}
     </>
-  )
+  );
 }
