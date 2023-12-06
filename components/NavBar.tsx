@@ -3,6 +3,7 @@ import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMe
 import Link from 'next/link'
 import React from 'react'
 import { RxCross2 } from "react-icons/rx";
+import { ModeToggle } from './ui/toggle-mode';
 
 
 const NavBar = () => {
@@ -16,10 +17,10 @@ const NavBar = () => {
             label:"Sales",
             href:"/sales"
         },
-        {
-            label:"Products",
-            href:"/products"
-        },
+        // {
+        //     label:"Products",
+        //     href:"/products"
+        // },
         {
             label:"Billing",
             href:"/billings"
@@ -40,13 +41,14 @@ const NavBar = () => {
 
 
   return (
-   <nav className='w-60  h-screen flex flex-col justify-between'>
+   <nav className='w-80  h-screen flex flex-col justify-between'>
    
     <div>
 
     <div className='mb-8 flex justify-between items-center'>Logo<span><RxCross2 /></span></div>
     
     {menus.map((menu,index)=><Button key={index} className='w-full mb-4 bg-inherit text-inherit rounded-none justify-start '><Link href={menu.href}>{menu.label}</Link></Button>)}
+    <ModeToggle />
     </div>
     <footer className='pb-3'>
     &copy; Copyright 2023
