@@ -15,18 +15,22 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
   data: TData[]
 }
 
+
+
+
 export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = useState({})
+  const [value, setValue] = useState<TData | {}>({});
   const table = useReactTable({
     data,
     columns,
@@ -38,9 +42,21 @@ export function DataTable<TData, TValue>({
     enableRowSelection : true
   })
 
+  useEffect(() => {
+    const getValue = () => {
+      const selectedRows = table.getSelectedRowModel().flatRows;
+      if (selectedRows.length > 0) {
+        setValue(selectedRows[0].original);
+      }
+    };
   
-  // console.log('rowSelection:', rowSelection);
-  console.log(table.getSelectedRowModel().flatRows)
+    getValue();
+    console.log(value)
+  
+    // Add 'table.getSelectedRowModel().flatRows' as a dependency if needed
+  },[table, value]);
+  console.log('rowSelection:', rowSelection);
+  // console.log(table.getSelectedRowModel().flatRows)
 
   return (
     <div className="rounded-md border">

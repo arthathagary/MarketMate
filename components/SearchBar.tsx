@@ -4,14 +4,14 @@ import { Button } from './ui/button';
 import { Input } from './ui/input';
 
 interface SearchBarProps {
-  onSearch: (searchTerm: string) => void;
+  onSearch?: (searchTerm: string) => void;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleSearch = (query: string) => {
-    onSearch(query);
+    onSearch!(query);
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

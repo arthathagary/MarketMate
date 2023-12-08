@@ -57,7 +57,7 @@ const SalesPage = () => {
   };
 
   return (
-    <div className='h-screen flex flex-col w-full'>
+    <div className='h-screen flex flex-col w-full pt-6 ml-8'>
       <SearchBar onSearch={handleSearch} />
       {/* Display DataTable only if searchQuery is not empty */}
       {searchQuery.trim() !== '' && (
