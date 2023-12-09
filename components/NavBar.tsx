@@ -33,12 +33,12 @@ const NavBar = ({onDataFromChild}:NavBarProps) => {
             label:"Items",
             href:"/items"
         },
+        // {
+        //     label:"Settings",
+        //     href:"/settings"
+        // },
         {
-            label:"Settings",
-            href:"/settings"
-        },
-        {
-            label:"Login",
+            label:"Logout",
             href:"/login"
         }
     ]
@@ -57,7 +57,7 @@ const NavBar = ({onDataFromChild}:NavBarProps) => {
    
     <div>
 
-    <div className='mb-8 flex justify-between items-center ml-3 pt-6'>Logo<span onClick={toggleVisibility}><RxCross2 /></span></div>
+    <div className='mb-8 flex justify-between items-center ml-3 pt-6'>Logo<span onClick={toggleVisibility}><RxCross2 className='w-5 h-5'/></span></div>
     
     {menus.map((menu,index)=><Button key={index} className='w-full mb-4 bg-inherit text-inherit rounded-none justify-start '><Link href={menu.href}>{menu.label}</Link></Button>)}
     <div className='ml-3'>

@@ -10,15 +10,18 @@ const DashboardLayout = () => {
   const handleChildData = (dataFromChild: boolean) => {
     setShouldRenderNavBar(dataFromChild);
     // Handle the data from the child component as needed
-    console.log('Data from NavBar:', dataFromChild);
-    
+    console.log('Data from NavBar:', dataFromChild);   
   };
+
+  const handleClick = ()=>{
+    setShouldRenderNavBar(!shouldRenderNavBar);
+  }
   return (
     <div className='flex gap-5'>
     {shouldRenderNavBar ? (
         <NavBar onDataFromChild={handleChildData} />
       ) : (
-        <RxHamburgerMenu />
+        <div onClick={handleClick} className='pt-6 ml-4'><RxHamburgerMenu className='w-5 h-5' /></div>
       )}
     <Dashboard />
     </div>
