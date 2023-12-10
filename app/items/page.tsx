@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/dialog";
 import Add from "./add";
 
-export const ItemsPage = () => {
+const ItemsPage = () => {
   return (
     <div className="p-10 mb-20 w-full">
       <div>
