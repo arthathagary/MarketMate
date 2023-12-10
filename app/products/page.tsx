@@ -2,7 +2,7 @@ import React from 'react'
 import {Button} from "../../components/ui/button"
 import Datatable from './Datatable'
 
-export const ProductPage = () => {
+const ProductPage = () => {
   return (
     <div className='w-full'>
     <div>
