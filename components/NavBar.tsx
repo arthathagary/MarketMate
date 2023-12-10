@@ -51,6 +51,8 @@ const NavBar = ({onDataFromChild}:NavBarProps) => {
         });
       };
 
+      
+
 
   return (
    <nav className='w-80  h-screen flex flex-col justify-between'>
@@ -64,9 +66,9 @@ const NavBar = ({onDataFromChild}:NavBarProps) => {
     <ModeToggle />
     </div>
     </div>
-    <footer className='pb-3 ml-3'>
+    {/* <footer className='pb-3 ml-3'>
     &copy; Copyright 2023
-    </footer>
+    </footer> */}
    </nav>
   )
 }

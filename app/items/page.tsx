@@ -25,7 +25,7 @@ export const ItemsPage = () => {
             <DialogTrigger asChild>
               <Button variant="outline">Add Items </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[505px] mb-[30px]">
+            <DialogContent className="sm:max-w-[600px] mb-[30px]">
               <DialogHeader>
                 <DialogTitle>Edit profile</DialogTitle>
                 <DialogDescription>
@@ -48,20 +48,3 @@ export const ItemsPage = () => {
 };
 export default ItemsPage;
 
-export function DialogDemo() {
-  return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline">Edit Profile</Button>
-      </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle>Edit profile</DialogTitle>
-          <DialogDescription>
-            Make changes to your profile here. Click save when you&aposre done.
-          </DialogDescription>
-        </DialogHeader>
-      </DialogContent>
-    </Dialog>
-  );
-}
