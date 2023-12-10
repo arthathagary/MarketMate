@@ -61,7 +61,7 @@ const NavBar = ({onDataFromChild}:NavBarProps) => {
 
     <div className='mb-8 flex justify-between items-center ml-3 pt-6'>Logo<span onClick={toggleVisibility}><RxCross2 className='w-5 h-5'/></span></div>
     
-    {menus.map((menu,index)=><Button key={index} className='w-full mb-4 bg-inherit text-inherit rounded-none justify-start '><Link href={menu.href}>{menu.label}</Link></Button>)}
+    {menus.map((menu,index)=><Link key={index}  href={menu.href}><Button className='w-full mb-4 bg-inherit text-inherit rounded-none justify-start '>{menu.label}</Button></Link>)}
     <div className='ml-3'>
     <ModeToggle />
     </div>
