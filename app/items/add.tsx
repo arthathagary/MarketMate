@@ -23,7 +23,7 @@ import {
   export function add() {
     return (
       <div className='w-full mt-20 flex justify-center items-center'>
-      <Card className='w-[350px]'>
+      <Card className='w-[500px]'>
         <CardHeader>
           <CardTitle>Supplier Management</CardTitle>
           <CardDescription>Add/Update Customer Items</CardDescription>

@@ -5,7 +5,7 @@ import NavBar from '@/components/NavBar'
 import { RxHamburgerMenu} from "react-icons/rx"
 
 
-const DashboardLayout = () => {
+const SalesLayout = () => {
   const [shouldRenderNavBar, setShouldRenderNavBar] = useState(true);
   const handleChildData = (dataFromChild: boolean) => {
     setShouldRenderNavBar(dataFromChild);
@@ -28,4 +28,4 @@ const DashboardLayout = () => {
   )
 }
 
-export default DashboardLayout
+export default SalesLayout

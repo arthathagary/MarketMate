@@ -1,11 +1,16 @@
+"use client"
 import { Button } from '@/components/ui/button'
-import { NavigationMenu, NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuList, NavigationMenuTrigger } from '@/components/ui/navigation-menu'
 import Link from 'next/link'
-import React from 'react'
-import { RxCross2 } from "react-icons/rx";
+import { useState } from 'react'
+import { RxCross2} from "react-icons/rx"
+import { ModeToggle } from './ui/toggle-mode'
 
+interface NavBarProps {
+    onDataFromChild: (data: boolean) => void;
+  }
 
-const NavBar = () => {
+const NavBar = ({onDataFromChild}:NavBarProps) => {
+    const [isVisible, setIsVisible] = useState(true);
 
     const menus = [
         {
@@ -16,10 +21,10 @@ const NavBar = () => {
             label:"Sales",
             href:"/sales"
         },
-        {
-            label:"Products",
-            href:"/products"
-        },
+        // {
+        //     label:"Products",
+        //     href:"/products"
+        // },
         {
             label:"Billing",
             href:"/billings"
@@ -28,29 +33,42 @@ const NavBar = () => {
             label:"Items",
             href:"/items"
         },
+        // {
+        //     label:"Settings",
+        //     href:"/settings"
+        // },
         {
-            label:"Settings",
-            href:"/settings"
-        },
-        {
-            label:"Login",
+            label:"Logout",
             href:"/login"
         }
     ]
+    const toggleVisibility = () => {
+        setIsVisible(prevVisibility => {
+          const newVisibility = !prevVisibility;
+          console.log(newVisibility);
+          onDataFromChild(newVisibility);
+          return newVisibility;
+        });
+      };
+
+      
 
 
   return (
-   <nav className='w-60  h-screen flex flex-col justify-between'>
+   <nav className='w-80  h-screen flex flex-col justify-between'>
    
     <div>
 
-    <div className='mb-8 flex justify-between items-center'>Logo<span><RxCross2 /></span></div>
+    <div className='mb-8 flex justify-between items-center ml-3 pt-6'>Logo<span onClick={toggleVisibility}><RxCross2 className='w-5 h-5'/></span></div>
     
     {menus.map((menu,index)=><Button key={index} className='w-full mb-4 bg-inherit text-inherit rounded-none justify-start '><Link href={menu.href}>{menu.label}</Link></Button>)}
+    <div className='ml-3'>
+    <ModeToggle />
     </div>
-    <footer className='pb-3'>
+    </div>
+    {/* <footer className='pb-3 ml-3'>
     &copy; Copyright 2023
-    </footer>
+    </footer> */}
    </nav>
   )
 }

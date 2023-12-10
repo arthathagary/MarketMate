@@ -1,15 +1,38 @@
-import React from 'react'
-import { Input } from './ui/input'
-import { Button } from './ui/button'
+"use client";
+import { useState } from 'react';
+import { Button } from './ui/button';
+import { Input } from './ui/input';
 
-const SearchBar = () => {
-  return (
-    <div className="flex w-full max-w-sm items-center space-x-2">
-      <Input type="text" placeholder="Enter Search Term" />
-      <Button type="submit">Search</Button>
-    </div>
-
-  )
+interface SearchBarProps {
+  onSearch?: (searchTerm: string) => void;
 }
 
-export default SearchBar
+const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearch = (query: string) => {
+    onSearch!(query);
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value;
+    setSearchTerm(query);
+    handleSearch(query); 
+  };
+
+  return (
+    <div className="flex w-full max-w-sm items-center space-x-2">
+      <Input
+        type="text"
+        placeholder="Enter Search Term"
+        value={searchTerm}
+        onChange={handleInputChange}
+      />
+      <Button type="button">
+        Search
+      </Button>
+    </div>
+  );
+};
+
+export default SearchBar;
